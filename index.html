@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>ロバの耳</title>
+  <link rel="stylesheet"
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link href="css/jquery-letterfx.css" rel="stylesheet" type="text/css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>ロバの耳</h1>
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="msgForm">メッセージ：</label>
+          <input type="text" class="form-control" id="msgForm">
+        </div>
+          <button type="submit" class="btn btn-primary">送信</button>
+      </form>
+      <div id="chatLogs"></div>
+  </div>
+　<img src="img/animal_roba.png"　width="" height="500">
+
+  <script src="http://code.jquery.com/jquery.min.js"></script>
+  <script src="js/tuxsudo.min.js"></script>
+  <script src="js/jquery-letterfx.js"></script>
+    <script type="text/javascript">
+        var socket = io.connect();
+
+        socket.on("server_to_client", function(data){appendMsg(data.value)});
+
+        function appendMsg(text) {
+            var tweet = $("<div>" + text + "</div>").letterfx({"fx":"swirl"});
+            $("#chatLogs").prepend(tweet);
+
+            var e = $(document.getElementById('chatLogs').getElementsByTagName('div'));
+            for (var i=3; i<e.length; i++) $(e[i]).fadeOut("slow");
+        }
+
+
+        $("form").submit(function(e){
+            var message = $("#msgForm").val();
+            $("#msgForm").val('');
+            socket.emit("client_to_server", {value : message});
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>

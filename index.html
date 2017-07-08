@@ -3,26 +3,57 @@
 <head>
   <meta charset="utf-8">
   <title>ロバの耳</title>
-  <link rel="stylesheet"
-href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
   <link href="css/jquery-letterfx.css" rel="stylesheet" type="text/css" />
+  <meta name="description" content="好きにぼやいてみましょう。ロバは聞いているようで聞いていませんから。">
+  <meta property="og:site_name" content="ロバの耳">
+  <meta property="og:title" content="ロバの耳">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="http://blog.sixapart.jp/2015-01/2015-overseas-events.html">
+  <meta property="og:image" content="img/animal_roba.png">
+  <meta property="og:description" content="好きにぼやいてみましょう。ロバは聞いているようで聞いていませんから。">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script type="text/javascript" src="js/snowfall.jquery.js"></script>
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-102236665-1', 'auto');
+  ga('send', 'pageview');
+
+  </script>
 </head>
 <body>
-  <div class="container">
+  <div class="container center">
     <h1>ロバの耳</h1>
-      <form class="form-inline">
+    <p>好きにぼやいてみましょう。ロバは聞いているようで聞いていませんから。</p>
+      <form class="form-inline" autocomplete="off">
         <div class="form-group">
-          <label for="msgForm">メッセージ：</label>
           <input type="text" class="form-control" id="msgForm">
         </div>
           <button type="submit" class="btn btn-primary">送信</button>
       </form>
+      <br>
+      <br>
       <div id="chatLogs"></div>
   </div>
-　<img src="img/animal_roba.png"　width="" height="500">
+  <div class="center">
+  <img src="img/animal_roba.png"　width="" height="400">
+  </div>
+  <br>
+  <div class="center">
+   <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  <br><br>
+  <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-fe.amazon-adsystem.com/e/cm?ref=qf_sp_asin_til&t=watasuke-22&m=amazon&o=9&p=8&l=as1&IS2=1&detail=1&asins=B00PESXEYC&linkId=604f550d2d0f41876972f0949faf7a2b&bc1=ffffff&lt1=_blank&fc1=333333&lc1=0066c0&bg1=ffffff&f=ifr">
+    </iframe>
+  <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-fe.amazon-adsystem.com/e/cm?ref=qf_sp_asin_til&t=watasuke-22&m=amazon&o=9&p=8&l=as1&IS2=1&detail=1&asins=B0002HY750&linkId=855920f0a604dcc647fea8f27e9186ff&bc1=ffffff&lt1=_blank&fc1=333333&lc1=0066c0&bg1=ffffff&f=ifr">
+    </iframe>  
+    </div>
 
   <script src="http://code.jquery.com/jquery.min.js"></script>
   <script src="js/tuxsudo.min.js"></script>

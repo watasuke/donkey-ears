@@ -7,6 +7,7 @@
 href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link href="css/jquery-letterfx.css" rel="stylesheet" type="text/css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script type="text/javascript" src="js/snowfall.jquery.js"></script>
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 </head>
 <body>
@@ -26,26 +27,28 @@ href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="http://code.jquery.com/jquery.min.js"></script>
   <script src="js/tuxsudo.min.js"></script>
   <script src="js/jquery-letterfx.js"></script>
-    <script type="text/javascript">
-        var socket = io.connect();
+  <script src="js/snowfall.jquery.js"></script>
+  <script type="text/javascript">
+    var socket = io.connect();
 
-        socket.on("server_to_client", function(data){appendMsg(data.value)});
+    socket.on("server_to_client", function(data){appendMsg(data.value)});
 
-        function appendMsg(text) {
-            var tweet = $("<div>" + text + "</div>").letterfx({"fx":"swirl"});
-            $("#chatLogs").prepend(tweet);
+    function appendMsg(text) {
+      var tweet = $("<div>" + text + "</div>").letterfx({"fx":"fly-right"});
+      $("#chatLogs").prepend(tweet);
+      $(document).snowfall({image :"img/carrot.png", minSize: 30, maxSize:50});
+      //$('#elementid').snowfall({flakeCount : 100, maxSpeed : 10});
 
-            var e = $(document.getElementById('chatLogs').getElementsByTagName('div'));
-            for (var i=3; i<e.length; i++) $(e[i]).fadeOut("slow");
-        }
-
-
-        $("form").submit(function(e){
-            var message = $("#msgForm").val();
-            $("#msgForm").val('');
-            socket.emit("client_to_server", {value : message});
-            e.preventDefault();
-        });
-    </script>
+      var e = $(document.getElementById('chatLogs').getElementsByTagName('div'));
+      for (var i=3; i<e.length; i++) $(e[i]).fadeOut("slow");
+    }
+  //$(document).snowfall({image :"img/carrot.png", minSize: 10, maxSize:32});
+      $("form").submit(function(e){
+        var message = $("#msgForm").val();
+        $("#msgForm").val('');
+        socket.emit("client_to_server", {value : message});
+        e.preventDefault();
+      });
+  </script>
 </body>
 </html>

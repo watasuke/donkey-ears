@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
   <meta charset="utf-8">
   <title>ロバの耳</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -72,7 +72,7 @@
     function appendMsg(text) {
       var tweet = $("<div>" + text + "</div>").letterfx({"fx":"fly-right"});
       $("#chatLogs").prepend(tweet);
-      $(document).snowfall({image :"img/carrot.png", minSize: 30, maxSize:50, flakeCount : 3, maxSpeed : 10});
+      $(document).snowfall({image :"img/carrot.png", minSize: 30, maxSize:50, flakeCount : 5, maxSpeed : 10});
       //$('#elementid').snowfall({flakeCount : 100, maxSpeed : 10});
 
       var e = $(document.getElementById('chatLogs').getElementsByTagName('div'));

@@ -80,7 +80,7 @@
     }
   //$(document).snowfall({image :"img/carrot.png", minSize: 10, maxSize:32});
       $("form").submit(function(e){
-        var message = $("#msgForm").val();
+        var message = escape_html($("#msgForm").val());
         $("#msgForm").val('');
         socket.emit("client_to_server", {value : message});
         e.preventDefault();

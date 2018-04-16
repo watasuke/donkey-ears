@@ -16,7 +16,7 @@ io.sockets.on('connection', function(socket) {
 });
 
 app.get('/', function (req, res) {
-    res.sendfile(__dirname + '/index.html');
+    res.sendFile(__dirname + '/index.html');
 });
 app.use('/css', express.static('css'));
 app.use('/js', express.static('js'));

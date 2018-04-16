@@ -15,6 +15,11 @@ io.sockets.on('connection', function(socket) {
     });
 });
 
+io.on('connection', (socket) => {
+    console.log('Client connected');
+    socket.on('disconnect', () => console.log('Client disconnected'));
+  });
+
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/index.html');
 });

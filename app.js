@@ -5,7 +5,7 @@ var socketio = require('socket.io');
 var fs = require('fs');
 var server = http.createServer(app);
 
-server.listen(8002);  // ポート競合の場合は値を変更
+server.listen(process.env.PORT || 8002);  // ポート競合の場合は値を変更
 
 var io = socketio.listen(server);
 

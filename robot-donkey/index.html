@@ -15,93 +15,62 @@
   <title>ロバの耳 | ロボロバモード</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/style.css">
-  <link href="/css/jquery-letterfx.css" rel="stylesheet" type="text/css" />
-  <meta name="description" content="好きにぼやいてみましょう。ロバは聞いているようで聞いていませんから。">
+  <meta name="description" content="好きにぼやいてみましょう。ロボロバがお返事します。">
   <link rel=”shortcut icon” href=”/img/favicon.ico” />
   <meta property="og:site_name" content="ロバの耳">
-  <meta property="og:title" content="ロバの耳">
+  <meta property="og:title" content="ロバの耳 | ロボロバモード">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="http://donkey-ears.com/">
-  <meta property="og:image" content="http://donkey-ears.com/img/animal_roba.png">
-  <meta property="og:description" content="好きにぼやいてみましょう。ロバは聞いているようで聞いていませんから。">
+  <meta property="og:url" content="http://donkey-ears.com/robot-donkey">
+  <meta property="og:image" content="http://donkey-ears.com/img/robot-donkey.png>
+  <meta property="og:description" content="好きにぼやいてみましょう。ロボロバがお返事します。">
   <meta property="fb:app_id" content="471090806564174" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@alpacanda21" />
   <meta name="twitter:player" content="@alpacanda21" />
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script type="text/javascript" src="/js/snowfall.jquery.js"></script>
-  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
 </head>
 <body>
   <div class="container center">
     <h1>ロバの耳</h1>
-    <p>好きにぼやいてみましょう。ロバは聞いているようで聞いていませんから。</p>
-      <form class="form-inline" autocomplete="off">
-        <div class="form-group">
-          <input type="text" class="form-control" id="msgForm">
-        </div>
-          <button type="submit" class="btn btn-primary">ぼやく</button>
-      </form>
-      <br>
-      <br>
-      <div id="chatLogs"></div>
+    <p>好きにぼやいてみましょう。ロボロバがお返事します。</p>
+    <form class="form-inline" autocomplete="off">
+      <div class="form-group">
+        <input type="text" class="form-control" id="msgForm">
+      </div>
+      <button type="submit" class="btn btn-primary">ぼやく</button>
+    </form>
+    <br>
+    <br>
+    <div id="chatLogs"></div>
   </div>
+  
   <div class="center">
-  <img src="/img/animal_roba.png"　width="" height="300">
+    <img src="/img/robot_donkey.png"　width="" height="300">
   </div>
   <br>
+  
   <div class="center">
-   <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-  <br><br>
-  <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-fe.amazon-adsystem.com/e/cm?ref=qf_sp_asin_til&t=watasuke-22&m=amazon&o=9&p=8&l=as1&IS2=1&detail=1&asins=B00PESXEYC&linkId=604f550d2d0f41876972f0949faf7a2b&bc1=ffffff&lt1=_blank&fc1=333333&lc1=0066c0&bg1=ffffff&f=ifr">
+    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+    <script>
+     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+    </script>
+    <br>
+    <br>
+    <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-fe.amazon-adsystem.com/e/cm?ref=qf_sp_asin_til&t=watasuke-22&m=amazon&o=9&p=8&l=as1&IS2=1&detail=1&asins=B00PESXEYC&linkId=604f550d2d0f41876972f0949faf7a2b&bc1=ffffff&lt1=_blank&fc1=333333&lc1=0066c0&bg1=ffffff&f=ifr">
     </iframe>
-  <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-fe.amazon-adsystem.com/e/cm?ref=qf_sp_asin_til&t=watasuke-22&m=amazon&o=9&p=8&l=as1&IS2=1&detail=1&asins=B0002HY750&linkId=855920f0a604dcc647fea8f27e9186ff&bc1=ffffff&lt1=_blank&fc1=333333&lc1=0066c0&bg1=ffffff&f=ifr">
+    <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-fe.amazon-adsystem.com/e/cm?ref=qf_sp_asin_til&t=watasuke-22&m=amazon&o=9&p=8&l=as1&IS2=1&detail=1&asins=B0002HY750&linkId=855920f0a604dcc647fea8f27e9186ff&bc1=ffffff&lt1=_blank&fc1=333333&lc1=0066c0&bg1=ffffff&f=ifr">
     </iframe>
-    </div>
+  </div>
 
   <script src="http://code.jquery.com/jquery.min.js"></script>
   <script src="/js/tuxsudo.min.js"></script>
-  <script src="/js/jquery-letterfx.js"></script>
-  <script src="/js/snowfall.jquery.js"></script>
   <script type="text/javascript">
-    var socket = io.connect();
-
-    socket.on("server_to_client", function(data){appendMsg(data.value)});
-
-    function appendMsg(text) {
-      var tweet = $("<div>" + text + "</div>").letterfx({"fx":"fly-right"});
-      $("#chatLogs").prepend(tweet);
-      $(document).snowfall({image :"/img/carrot.png", minSize: 30, maxSize:50, flakeCount : 5, maxSpeed : 10});
-      //$('#elementid').snowfall({flakeCount : 100, maxSpeed : 10});
-
-      var e = $(document.getElementById('chatLogs').getElementsByTagName('div'));
-      for (var i=5; i<e.length; i++) $(e[i]).fadeOut("slow");
-    }
-  //$(document).snowfall({image :"img/carrot.png", minSize: 10, maxSize:32});
-      $("form").submit(function(e){
-        var message = escape_html($("#msgForm").val());
-        $("#msgForm").val('');
-        socket.emit("client_to_server", {value : message});
-        e.preventDefault();
-      });
-
-    function escape_html (string) {
-      if(typeof string !== 'string') {
-        return string;
-      }
-      return string.replace(/[&'`"<>]/g, function(match) {
-        return {
-          '&': '&amp;',
-          "'": '&#x27;',
-          '`': '&#x60;',
-          '"': '&quot;',
-          '<': '&lt;',
-          '>': '&gt;',
-        }[match]
-      });
-    }
+    window.onload
+  
   </script>
+  
+
 </body>
 </html>

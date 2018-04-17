@@ -26,3 +26,4 @@ app.get('/', function (req, res) {
 app.use('/css', express.static('css'));
 app.use('/js', express.static('js'));
 app.use('/img', express.static('img'));
+app.use(express.favicon(path.join(__dirname, '/favicon.ico'))); 

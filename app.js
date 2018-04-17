@@ -15,8 +15,13 @@ io.sockets.on('connection', function(socket) {
     });
 });
 
+io.on('connection', (socket) => {
+    console.log('Client connected');
+    socket.on('disconnect', () => console.log('Client disconnected'));
+  });
+
 app.get('/', function (req, res) {
-    res.sendfile(__dirname + '/index.html');
+    res.sendFile(__dirname + '/index.html');
 });
 app.use('/css', express.static('css'));
 app.use('/js', express.static('js'));

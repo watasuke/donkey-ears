@@ -4,6 +4,8 @@ var http = require('http');
 var socketio = require('socket.io');
 var fs = require('fs');
 var server = http.createServer(app);
+var favicon = require('serve-favicon')
+var path = require('path')
 
 server.listen(process.env.PORT || 8002);  // ポート競合の場合は値を変更
 
@@ -26,4 +28,4 @@ app.get('/', function (req, res) {
 app.use('/css', express.static('css'));
 app.use('/js', express.static('js'));
 app.use('/img', express.static('img'));
-app.use(express.favicon(path.join(__dirname, '/favicon.ico'))); 
+app.use(favicon(path.join(__dirname, 'img', 'favicon.ico')))

@@ -40,7 +40,7 @@
       <div class="form-group">
         <input type="text" class="form-control" id="msgForm">
       </div>
-      <button type="submit" class="btn btn-primary">ぼやく</button>
+      <button id="update" type="submit" class="btn btn-primary">ぼやく</button>
     </form>
     <br>
     <br>
@@ -71,7 +71,6 @@
   <script type="text/javascript">
     
     $("form").submit(function(e){
-        console.log(1)
         var message = escape_html($("#msgForm").val());
         $("#msgForm").val('');
         appendMsg(message);
@@ -101,19 +100,28 @@
         }[match]
       });
     }
+    
+    function hitApi(string){
 
+      $.getJSON('https://api.a3rt.recruit-tech.co.jp/talk/v1/smalltalk?callback=?',
+        {
+          apikey: "hwLIM6uWWh5wF1qwPA6lcYMy38c87yUH" , query: $('#zip').val()
 
-  $.post(
-    "test_post.php",                      // リクエストURL
-    {"key1": "value1", "key2": "value2"}, // データ
-    function(data, status) {
-        // 通信成功時にデータを表示
-        $("#test_result")
-            .append("status:").append(status).append("<br/>")
-            .append("data:").append(data).append("<br/>");
-    },
-    "html"                                 // 応答データ形式
-  );
+        }
+       )
+    // 結果を取得したら…
+    .done(function(data) {
+      // 中身が空でなければ、その値を［住所］欄に反映
+      if (data.results) {
+        var result = data.results[0];
+        $('#address').val(result.address1 + result.address2 + result.address3);
+      // 中身が空の場合は、エラーメッセージを反映
+      } else {
+        $('#address').val('該当する住所が存在しません。');
+      }
+    });
+    }
+
   </script>
 
 </body>

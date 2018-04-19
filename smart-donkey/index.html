@@ -15,13 +15,14 @@
   <title>ロバの耳 | 賢ロバモード</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/style.css">
+  <link href="/css/jquery-letterfx.css" rel="stylesheet" type="text/css" />
   <meta name="description" content="好きにぼやいてみましょう。賢いロバがお返事します。">
-  <link rel=”shortcut icon” href=”/img/favicon.ico” />
+  <link rel=”icon” href=”/img/favicon.ico” />
   <meta property="og:site_name" content="ロバの耳">
   <meta property="og:title" content="ロバの耳 | ロバ賢者モード">
   <meta property="og:type" content="website">
   <meta property="og:url" content="http://donkey-ears.com/smart-donkey">
-  <meta property="og:image" content="http://donkey-ears.com/img/robot-donkey.png>
+  <meta property="og:image" content="http://donkey-ears.com/img/robot-donkey.png">
   <meta property="og:description" content="好きにぼやいてみましょう。賢いロバがお返事します。">
   <meta property="fb:app_id" content="471090806564174" />
   <meta name="twitter:card" content="summary" />
@@ -29,7 +30,7 @@
   <meta name="twitter:player" content="@alpacanda21" />
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
+  
 </head>
 <body>
   <div class="container center">
@@ -66,8 +67,53 @@
 
   <script src="http://code.jquery.com/jquery.min.js"></script>
   <script src="/js/tuxsudo.min.js"></script>
+  <script src="js/jquery-letterfx.js"></script>
   <script type="text/javascript">
     
+    $("form").submit(function(e){
+        console.log(1)
+        var message = escape_html($("#msgForm").val());
+        $("#msgForm").val('');
+        appendMsg(message);
+        e.preventDefault();
+    });
+
+    function appendMsg(text) {
+      var tweet = $("<div>" + text + "</div>");
+      $("#chatLogs").prepend(tweet);
+
+      var e = $(document.getElementById('chatLogs').getElementsByTagName('div'));
+      for (var i=5; i<e.length; i++) $(e[i]).fadeOut("slow");
+    }
+
+    function escape_html (string) {
+      if(typeof string !== 'string') {
+        return string;
+      }
+      return string.replace(/[&'`"<>]/g, function(match) {
+        return {
+          '&': '&amp;',
+          "'": '&#x27;',
+          '`': '&#x60;',
+          '"': '&quot;',
+          '<': '&lt;',
+          '>': '&gt;',
+        }[match]
+      });
+    }
+
+
+  $.post(
+    "test_post.php",                      // リクエストURL
+    {"key1": "value1", "key2": "value2"}, // データ
+    function(data, status) {
+        // 通信成功時にデータを表示
+        $("#test_result")
+            .append("status:").append(status).append("<br/>")
+            .append("data:").append(data).append("<br/>");
+    },
+    "html"                                 // 応答データ形式
+  );
   </script>
 
 </body>

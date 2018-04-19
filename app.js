@@ -28,5 +28,5 @@ app.get('/', function (req, res) {
 app.use('/css', express.static('css'));
 app.use('/js', express.static('js'));
 app.use('/img', express.static('img'));
-app.use('/robot-donkey', express.static('robot-donkey'));
+app.use('/smart-donkey', express.static('smart-donkey'));
 app.use(favicon(path.join(__dirname, 'img', 'favicon.ico')))

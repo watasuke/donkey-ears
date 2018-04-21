@@ -40,7 +40,7 @@
       <div class="form-group">
         <input type="text" class="form-control" id="msgForm">
       </div>
-      <button id="update" type="submit" class="btn btn-primary">ぼやく</button>
+      <button id="update" type="button" class="btn btn-primary">ぼやく</button>
     </form>
     <br>
     <br>
@@ -70,9 +70,10 @@
   <script src="js/jquery-letterfx.js"></script>
   <script type="text/javascript">
     
-    $("form").submit(function(e){
+    $("form").click(function(e){
         var message = escape_html($("#msgForm").val());
         $("#msgForm").val('');
+        handler_request_reply()
         appendMsg(message);
         e.preventDefault();
     });
@@ -101,27 +102,49 @@
       });
     }
     
-    function hitApi(string){
+/*---------------------------------------*/
+/* HTML(だけ)の読み込みが完了したら */
+/*---------------------------------------*/
+window.addEventListener('DOMContentLoaded',()=>{
+    //- イベントリスナー登録
+    document.getElementById('update').addEventListener('click',handler_request_reply);
+});
 
-      $.getJSON('https://api.a3rt.recruit-tech.co.jp/talk/v1/smalltalk?callback=?',
-        {
-          apikey: "hwLIM6uWWh5wF1qwPA6lcYMy38c87yUH" , query: $('#zip').val()
+/*---------------------------------------*/
+/* 返答をリクエスト */
+/*---------------------------------------*/
+function handler_request_reply(ev){
+    /*---------------------------------------*/
+    /* コメント取得 */
+    /*---------------------------------------*/
+    const comment = document.getElementById('msgForm').value;
 
-        }
-       )
-    // 結果を取得したら…
-    .done(function(data) {
-      // 中身が空でなければ、その値を［住所］欄に反映
-      if (data.results) {
-        var result = data.results[0];
-        $('#address').val(result.address1 + result.address2 + result.address3);
-      // 中身が空の場合は、エラーメッセージを反映
-      } else {
-        $('#address').val('該当する住所が存在しません。');
-      }
+    /*---------------------------------------*/
+    /* レクエストデータ */
+    /*---------------------------------------*/
+    let formdata = new FormData();
+    //- apikeyパラメーター 
+    formdata.append('apikey','hwLIM6uWWh5wF1qwPA6lcYMy38c87yUH');
+    //- コメント
+    formdata.append('query',comment);
+
+    /*---------------------------------------*/
+    /* リクエスト */
+    /*---------------------------------------*/
+    fetch('https://api.a3rt.recruit-tech.co.jp/talk/v1/smalltalk',{
+        method: 'post',
+        body: formdata,
+    }).then(response => {
+        //- レスポンス取得
+        response.json().then(data => {
+            //- 返答取得
+            const reply = data.results[0].reply;
+            //- 出力
+            document.getElementById('chatLogs').innerHTML = reply;
+        });
     });
-    }
 
+}
   </script>
 
 </body>

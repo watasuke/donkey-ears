@@ -21,8 +21,8 @@
   <meta property="og:site_name" content="ロバの耳">
   <meta property="og:title" content="ロバの耳 | ロバ賢者モード">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="http://donkey-ears.com/smart-donkey">
-  <meta property="og:image" content="http://donkey-ears.com/img/robot-donkey.png">
+  <meta property="og:url" content="https://www.donkey-ears.com/smart-donkey">
+  <meta property="og:image" content="https://www.donkey-ears.com/img/robot-donkey.png">
   <meta property="og:description" content="好きにぼやいてみましょう。賢いロバがお返事します。">
   <meta property="fb:app_id" content="471090806564174" />
   <meta name="twitter:card" content="summary" />
@@ -34,13 +34,13 @@
 </head>
 <body>
   <div class="container center">
-    <h1>ロバの耳</h1>
+    <h1>賢いロバの耳</h1>
     <p>好きにぼやいてみましょう。賢いロバがお返事します。</p>
     <form class="form-inline" autocomplete="off">
       <div class="form-group">
         <input type="text" class="form-control" id="msgForm">
       </div>
-      <button id="update" type="button" class="btn btn-primary">ぼやく</button>
+      <button id="update" type="submit" class="btn btn-primary">ぼやく</button>
     </form>
     <br>
     <br>
@@ -57,6 +57,8 @@
     <script>
      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
     </script>
+    <br><br>
+      <a href="https://www.donkey-ears.com">ふつうのロバと話す</a>
     <br>
     <br>
     <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-fe.amazon-adsystem.com/e/cm?ref=qf_sp_asin_til&t=watasuke-22&m=amazon&o=9&p=8&l=as1&IS2=1&detail=1&asins=B00PESXEYC&linkId=604f550d2d0f41876972f0949faf7a2b&bc1=ffffff&lt1=_blank&fc1=333333&lc1=0066c0&bg1=ffffff&f=ifr">
@@ -70,7 +72,7 @@
   <script src="js/jquery-letterfx.js"></script>
   <script type="text/javascript">
     
-    $("form").click(function(e){
+    $("form").submit(function(e){
         var message = escape_html($("#msgForm").val());
         $("#msgForm").val('');
         handler_request_reply()
